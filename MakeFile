@@ -1,0 +1,19 @@
+postgres:
+	docker run --name postgres13 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:13-alpine
+
+createdb:
+	docker exec -it postgres13 createdb --username=root --owner=root shotwot_test
+
+dropdb:
+	docker exec -it postgres13 dropdb shotwot_test
+
+install_migrate:
+	go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
+
+migrateup:
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/shotwot_test?sslmode=disable" -verbose up
+
+migratedown:
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/shotwot_test?sslmode=disable" -verbose down
+
+.PHONY: createdb dropdb postgres install_migrate
