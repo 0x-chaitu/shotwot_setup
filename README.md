@@ -1,11 +1,11 @@
 Shotwot setups
 
->>Windows  
-  >>Install wsl2, docker desktop and (golang in wsl2)
+Windows  
+  Install wsl2, docker desktop and (golang in wsl2)
   >>Open in wsl:
     Run: make postgres -> make createdb -> make install_migrate -> make migrateup 
 
 
-  Mac:
+Mac:
   >>Install docker, golang and make
     Run: make postgres -> make createdb -> make install_migrate -> make migrateup
