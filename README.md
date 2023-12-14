@@ -8,4 +8,8 @@ Windows
 
 Mac:
   >Install docker, golang and make
-  >>Run: make postgres -> make createdb -> make install_migrate -> make migrateup
+  >>Run:
+>  >make postgres 
+>  >make createdb
+>  > make install_migrate
+>  > make migrateup
